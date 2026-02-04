@@ -11,6 +11,7 @@ from ado_pr_mcp.git_detector import (
 )
 
 
+@pytest.mark.unit
 def test_parse_modern_azure_devops_url():
     """Test parsing modern dev.azure.com URL format."""
     url = "https://dev.azure.com/myorg/MyProject/_git/MyRepo"
@@ -22,6 +23,7 @@ def test_parse_modern_azure_devops_url():
     assert result.repository == "MyRepo"
 
 
+@pytest.mark.unit
 def test_parse_legacy_visualstudio_url():
     """Test parsing legacy visualstudio.com URL format."""
     url = "https://myorg.visualstudio.com/MyProject/_git/MyRepo"
@@ -33,6 +35,7 @@ def test_parse_legacy_visualstudio_url():
     assert result.repository == "MyRepo"
 
 
+@pytest.mark.unit
 def test_parse_non_azure_url():
     """Test that non-Azure DevOps URLs return None."""
     url = "https://github.com/user/repo.git"
@@ -41,6 +44,7 @@ def test_parse_non_azure_url():
     assert result is None
 
 
+@pytest.mark.unit
 def test_parse_invalid_url():
     """Test that invalid URLs return None."""
     url = "not-a-valid-url"
@@ -49,6 +53,7 @@ def test_parse_invalid_url():
     assert result is None
 
 
+@pytest.mark.unit
 @patch("subprocess.run")
 def test_get_git_remote_url_success(mock_run):
     """Test successful git remote URL retrieval."""
@@ -63,6 +68,7 @@ def test_get_git_remote_url_success(mock_run):
     mock_run.assert_called_once()
 
 
+@pytest.mark.unit
 @patch("subprocess.run")
 def test_get_git_remote_url_not_in_repo(mock_run):
     """Test git remote URL when not in a repository."""
@@ -73,6 +79,7 @@ def test_get_git_remote_url_not_in_repo(mock_run):
     assert result is None
 
 
+@pytest.mark.unit
 @patch("subprocess.run")
 def test_get_git_remote_url_timeout(mock_run):
     """Test git remote URL when command times out."""
@@ -83,6 +90,7 @@ def test_get_git_remote_url_timeout(mock_run):
     assert result is None
 
 
+@pytest.mark.unit
 @patch("ado_pr_mcp.git_detector.get_git_remote_url")
 def test_detect_current_repo_success(mock_get_url):
     """Test successful current repository detection."""
@@ -96,6 +104,7 @@ def test_detect_current_repo_success(mock_get_url):
     assert result.repository == "repo"
 
 
+@pytest.mark.unit
 @patch("ado_pr_mcp.git_detector.get_git_remote_url")
 def test_detect_current_repo_no_git(mock_get_url):
     """Test repository detection when not in a git repository."""
@@ -106,6 +115,7 @@ def test_detect_current_repo_no_git(mock_get_url):
     assert result is None
 
 
+@pytest.mark.unit
 @patch("ado_pr_mcp.git_detector.get_git_remote_url")
 def test_detect_current_repo_non_azure(mock_get_url):
     """Test repository detection with non-Azure DevOps git remote."""

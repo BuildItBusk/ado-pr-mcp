@@ -37,6 +37,18 @@ ado-pr-mcp/
 - Deliberate updates after reviewing changelogs
 - Using `httpx` directly instead of `azure-devops` SDK for lighter footprint
 
+### Dependency Management
+```bash
+# Check for outdated packages
+uv pip list --outdated
+
+# Update specific package after reviewing changelog
+# 1. Review changelog at PyPI or GitHub
+# 2. Update version in pyproject.toml
+# 3. Run: uv sync --extra dev
+# 4. Run tests: uv run pytest tests/
+```
+
 ## Current Status
 ✅ **Phase 1 Complete:**
 - MCP server with FastMCP
