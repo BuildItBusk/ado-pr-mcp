@@ -85,6 +85,25 @@ uv run pytest tests/
 - Add pagination for large result sets
 - Advanced filtering options
 
+## Git Commit Guidelines
+**Format**: One title line + 5-10 concise bullet points
+
+```
+Title summarizing the change
+
+- Specific change with technical value
+- Another meaningful change
+- Key upgrade or fix with reason
+- Configuration or structural change
+- Impact or benefit to developers
+```
+
+**Rules**:
+- Focus on changes that provide value to future developers
+- Include technical reasons for upgrades (e.g., "fixes deprecation warnings")
+- Omit meta-information like "Made by Claude" or "AI-assisted"
+- Keep bullets factual and concise
+
 ## Architecture Notes
 - Logs to stderr (critical for stdio transport)
 - Base64 PAT authentication
